@@ -1,5 +1,6 @@
 <template>
   <div>
+    <book-form @addBook='appendBook'></book-form>
     <h1>
       {{title}}
     </h1>
@@ -11,6 +12,7 @@
 
 <script>
   import BookItem from "./BookItem";
+  import BookForm from "./BookForm";
 
   export default {
     name: 'BookList',
@@ -24,7 +26,12 @@
         ]
       }
     },
-    components: {BookItem}
+    components: {BookItem, BookForm},
+    methods: {
+      appendBook: function (bookTitle, bookAuthor) {
+        this.books.push({title: bookTitle, author: bookAuthor})
+      }
+    }
   }
 </script>
 
